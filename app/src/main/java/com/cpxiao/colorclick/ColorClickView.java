@@ -22,18 +22,8 @@ public class ColorClickView extends BaseSurfaceViewFPS implements View.OnTouchLi
     private static final boolean DEBUG = Constant.DEBUG;
     private static final String TAG = ColorClickView.class.getSimpleName();
 
-    /**
-     *
-     */
-//    private static final int COLOR_BG = 0xFFA9B7B7;
-//    private static final int COLOR_YELLOW = 0xFFEA8010;
-//    private static final int COLOR_RED = 0xFFEB4F38;
-//    private static final int COLOR_GREEN = 0xFF56ABE4;
-    /**
-     * 默认颜色
-     */
     private static final int COLOR_BG = 0xFFE2E2E2;
-    private static final int COLOR_YELLOW = 0xFFFEE051;
+    private static final int COLOR_YELLOW = 0xFFFDA948;
     private static final int COLOR_RED = 0xFFFC458C;
     private static final int COLOR_GREEN = 0xFFBAE23B;
 
