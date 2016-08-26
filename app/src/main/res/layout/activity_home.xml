@@ -1,11 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/home_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-</RelativeLayout>
+        android:gravity="center"
+        android:padding="30dp"
+        android:text="@string/app_name"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="48sp"
+        android:textStyle="bold"/>
+
+
+    <include layout="@layout/layout_5life_bar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_classic"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_classic"/>
+
+        <Button
+            android:id="@+id/btn_extra"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_extra"/>
+
+        <Button
+            android:id="@+id/btn_time"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_time"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_best_score"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_best_score"/>
+
+        <Button
+            android:id="@+id/btn_settings"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_settings"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_quit"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_quit"/>
+    </LinearLayout>
+
+
+    <include layout="@layout/ads_layout"/>
+</LinearLayout>

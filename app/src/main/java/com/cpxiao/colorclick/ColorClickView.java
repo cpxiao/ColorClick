@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.cpxiao.commonlibrary.constant.Constant;
-import com.cpxiao.commonlibrary.views.BaseSurfaceViewFPS;
+import com.cpxiao.minigamelib.views.BaseSurfaceViewFPS;
 
 import java.util.Random;
 
@@ -22,11 +22,22 @@ public class ColorClickView extends BaseSurfaceViewFPS implements View.OnTouchLi
     private static final boolean DEBUG = Constant.DEBUG;
     private static final String TAG = ColorClickView.class.getSimpleName();
 
-    private static final int COLOR_BG = 0xFFA9B7B7;
-    private static final int COLOR_YELLOW = 0xFFEA8010;
-    //    private static final int COLOR_YELLOW = 0xFFBC9561;//as文件夹颜色
-    private static final int COLOR_RED = 0xFFEB4F38;
-    private static final int COLOR_BLUE = 0xFF56ABE4;
+    /**
+     *
+     */
+//    private static final int COLOR_BG = 0xFFA9B7B7;
+//    private static final int COLOR_YELLOW = 0xFFEA8010;
+//    private static final int COLOR_RED = 0xFFEB4F38;
+//    private static final int COLOR_GREEN = 0xFF56ABE4;
+    /**
+     * 默认颜色
+     */
+    private static final int COLOR_BG = 0xFFE2E2E2;
+    private static final int COLOR_YELLOW = 0xFFFEE051;
+    private static final int COLOR_RED = 0xFFFC458C;
+    private static final int COLOR_GREEN = 0xFFBAE23B;
+
+
     /**
      * 横竖条目数
      */
@@ -219,17 +230,24 @@ public class ColorClickView extends BaseSurfaceViewFPS implements View.OnTouchLi
         if (!checkX(mClickX) || !checkY(mClickY)) {
             return;
         }
+        if (checkX(mStartX) && checkY(mStartY)) {
+            //还未未点击『开始』
+            if (mStartX != mClickX || mStartY != mClickY) {
+                //点击位置不是开始的位置，就直接返回
+                return;
+            }
+        }
         BaseCircle circle = mCircles[mClickY][mClickX];
 
         if (mStartX == mClickX && mStartY == mClickY) {
             mStartX = -1;
             mStartY = -1;
             //点击了『开始』
-            mCircles[mClickY][mClickX] = new DisappearingCircle(circle.x, circle.y, circle.bgR, circle.r, circle.bgColor, COLOR_BLUE, true);
+            mCircles[mClickY][mClickX] = new DisappearingCircle(circle.x, circle.y, circle.bgR, circle.r, circle.bgColor, COLOR_GREEN, true);
             changeScore();
         } else if (circle instanceof DisappearingCircle && !((DisappearingCircle) circle).isClicked) {
             //点击了『可点处』,并且未点过此处
-            mCircles[mClickY][mClickX] = new DisappearingCircle(circle.x, circle.y, circle.bgR, circle.r, circle.bgColor, COLOR_BLUE, true);
+            mCircles[mClickY][mClickX] = new DisappearingCircle(circle.x, circle.y, circle.bgR, circle.r, circle.bgColor, COLOR_GREEN, true);
             changeScore();
         } else {
             //点击了『不可点处』，game over
@@ -296,7 +314,7 @@ public class ColorClickView extends BaseSurfaceViewFPS implements View.OnTouchLi
             super(x, y, bgR, r, bgColor, color);
             this.isClicked = isClicked;
             if (isClicked) {
-                showTime = 8;
+                showTime = 9;
                 showTimeMax = 10;
             } else {
                 showTime = 30;

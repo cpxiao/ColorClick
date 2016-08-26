@@ -2,9 +2,16 @@
 <manifest package="com.cpxiao.colorclick"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!--友盟统计权限 start-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--友盟添统计权限 end-->
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -20,8 +27,17 @@
 
         <activity
             android:name=".activity.GameActivity"
-            android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.BestScoreActivity"
+            android:screenOrientation="portrait"/>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="57bfb8f3e0f55ab1b40018b8"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}"/>
     </application>
 
 </manifest>
