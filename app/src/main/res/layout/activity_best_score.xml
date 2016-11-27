@@ -6,7 +6,7 @@
     android:background="@drawable/best_score_bg"
     android:orientation="vertical">
 
-    <include layout="@layout/big_ads_layout"/>
+    <include layout="@layout/layout_ads_big"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:padding="5dp"
-                android:text="@string/label_classic"
+                android:text="@string/classic_mode"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"/>
@@ -54,7 +54,7 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:padding="5dp"
-                android:text="@string/label_extra"
+                android:text="@string/extra_mode"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"/>
@@ -83,7 +83,7 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:padding="5dp"
-                android:text="@string/label_time"
+                android:text="@string/time_mode"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"/>

@@ -1,8 +1,9 @@
 package com.cpxiao.colorclick;
 
 /**
- * Created by cpxiao on 8/26/16.
  * KeyExtra
+ *
+ * @author cpxiao on 2016/8/26.
  */
 public class KeyExtra {
 

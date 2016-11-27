@@ -18,7 +18,7 @@
         android:textStyle="bold"/>
 
 
-    <include layout="@layout/layout_5life_bar"/>
+    <include layout="@layout/layout_5red_star"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,41 +31,34 @@
             android:id="@+id/btn_classic"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="@string/btn_classic"/>
+            android:text="@string/classic_mode"/>
 
         <Button
             android:id="@+id/btn_extra"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="@string/btn_extra"/>
+            android:text="@string/extra_mode"/>
 
         <Button
             android:id="@+id/btn_time"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="@string/btn_time"
+            android:text="@string/time_mode"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/btn_best_score"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="@string/btn_best_score"/>
-
-        <Button
-            android:id="@+id/btn_settings"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_settings"
-            android:visibility="gone"/>
+            android:text="@string/best_score"/>
 
         <Button
             android:id="@+id/btn_quit"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="@string/btn_quit"/>
+            android:text="@string/quit"/>
     </LinearLayout>
 
 
-    <include layout="@layout/ads_layout"/>
+    <include layout="@layout/layout_ads"/>
 </LinearLayout>

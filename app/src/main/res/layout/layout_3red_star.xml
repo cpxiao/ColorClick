@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/life_bar_0"
+        android:layout_width="@dimen/three_red_star_size"
+        android:layout_height="@dimen/three_red_star_size"
+        android:scaleType="fitXY"
+        android:src="@drawable/life_alive"/>
+
+    <ImageView
+        android:id="@+id/life_bar_1"
+        android:layout_width="@dimen/three_red_star_size"
+        android:layout_height="@dimen/three_red_star_size"
+        android:scaleType="fitXY"
+        android:src="@drawable/life_alive"/>
+
+    <ImageView
+        android:id="@+id/life_bar_2"
+        android:layout_width="@dimen/three_red_star_size"
+        android:layout_height="@dimen/three_red_star_size"
+        android:scaleType="fitXY"
+        android:src="@drawable/life_alive"/>
+</LinearLayout>

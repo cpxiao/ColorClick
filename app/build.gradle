@@ -12,7 +12,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.cpxiao.colorclick"
+        applicationId "com.cpxiao.colorclick.free"
         minSdkVersion 9
         targetSdkVersion 23
         versionCode 101
@@ -69,6 +69,16 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
 
-    compile project(':Utils:commonlibrary')
-    compile project(':Utils:minigamelib')
+    compile project(':AndroidUtils:library')
+//    compile project(':AndroidMiniGame:library')
+
+    //友盟统计 start
+    compile 'com.umeng.analytics:analytics:5.6.7'
+    //友盟统计 end
+
+    //Facebook广告 start
+    compile files('libs/AudienceNetwork_v4.7.jar')
+    //Facebook广告 end
+
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }

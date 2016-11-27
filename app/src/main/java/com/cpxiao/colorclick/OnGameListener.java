@@ -1,8 +1,9 @@
 package com.cpxiao.colorclick;
 
 /**
- * Created by cpxiao on 8/25/16.
  * OnGameListener
+ *
+ * @author cpxiao on 2016/8/25.
  */
 public interface OnGameListener {
 

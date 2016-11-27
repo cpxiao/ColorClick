@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Color Click</string>
+
+    <string name="best_score">Best Score</string>
+    <string name="quit">Quit</string>
+
+    <string name="start">Start</string>
+
+    <string name="classic_mode">Classic Mode</string>
+    <string name="extra_mode">Extra Mode</string>
+    <string name="time_mode">Time Mode</string>
+
+    <string name="game_over">Game Over</string>
+    <string name="play_again">Play Again ?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

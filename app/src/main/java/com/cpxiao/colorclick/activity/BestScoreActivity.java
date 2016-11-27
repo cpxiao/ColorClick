@@ -7,14 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.cpxiao.androidutils.library.utils.PreferencesUtils;
 import com.cpxiao.colorclick.KeyExtra;
 import com.cpxiao.colorclick.R;
-import com.cpxiao.commonlibrary.utils.PreferencesUtils;
-import com.cpxiao.minigamelib.activity.BaseActivity;
+import com.cpxiao.colorclick.ads.core.ZAdPosition;
 
 /**
- * Created by cpxiao on 8/26/16.
  * BestScoreActivity
+ *
+ * @author cpxiao on 2016/8/26.
  */
 public class BestScoreActivity extends BaseActivity {
 
@@ -24,8 +25,12 @@ public class BestScoreActivity extends BaseActivity {
         setContentView(R.layout.activity_best_score);
         initWidget();
 
-        initBigAds("167302960362723_167359617023724");
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initSmallAds(getApplicationContext(), ZAdPosition.POSITION_BEST_SCORE_ACTIVITY);
     }
 
     private void initWidget() {

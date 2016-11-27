@@ -8,61 +8,84 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.cpxiao.androidutils.library.utils.PreferencesUtils;
 import com.cpxiao.colorclick.ColorClickView;
 import com.cpxiao.colorclick.KeyExtra;
 import com.cpxiao.colorclick.OnGameListener;
 import com.cpxiao.colorclick.R;
-import com.cpxiao.commonlibrary.utils.PreferencesUtils;
-import com.cpxiao.minigamelib.activity.BaseActivity;
-import com.cpxiao.minigamelib.views.DialogUtils;
+import com.cpxiao.colorclick.ads.core.ZAdPosition;
+import com.cpxiao.colorclick.views.DialogUtils;
 
 /**
- * Created by cpxiao on 8/25/16.
  * GameActivity
+ *
+ * @author cpxiao on 2016/8/25.
  */
 public class GameActivity extends BaseActivity {
 
     private String mGameModel = KeyExtra.KEY_CLASSIC_BEST_SCORE;
 
-    private int mBestScore = 0;
-    private TextView mScoreView, mBestScoreView;
-
-    private ImageView mLifeBar0, mLifeBar1, mLifeBar2;
-
+    /**
+     * 分数
+     */
+    protected int mBestScore = 0;
+    /**
+     * 当前分数view
+     */
+    protected TextView mScoreView;
+    /**
+     * 最高分view
+     */
+    protected TextView mBestScoreView;
+    /**
+     * 生命条
+     */
+    protected LinearLayout mLifeBar;
+    protected ImageView mLifeBarLife0;
+    protected ImageView mLifeBarLife1;
+    protected ImageView mLifeBarLife2;
+    /**
+     * Game View Layout
+     */
+    protected LinearLayout mGameViewLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_game);
-        if (getIntent() != null && getIntent().getStringExtra(KeyExtra.INTENT_NAME_GAME_MODEL) != null) {
-            mGameModel = getIntent().getStringExtra(KeyExtra.INTENT_NAME_GAME_MODEL);
+
+        if (getIntent() != null) {
+            String model = getIntent().getStringExtra(KeyExtra.INTENT_NAME_GAME_MODEL);
+            if (model != null) {
+                mGameModel = model;
+            }
         }
         initWidget();
-        initSmallAds("167302960362723_167303267029359");
-    }
-
-    private void initWidget() {
-        mBestScore = PreferencesUtils.getInt(this, mGameModel, 0);
-        mBestScoreView = (TextView) findViewById(R.id.best_score);
-        mScoreView = (TextView) findViewById(R.id.score);
-        setScoreAndBestScore(0);
-
-        mLifeBar0 = (ImageView) findViewById(R.id.life_bar_0);
-        mLifeBar1 = (ImageView) findViewById(R.id.life_bar_1);
-        mLifeBar2 = (ImageView) findViewById(R.id.life_bar_2);
-        ImageView settingsBtn = (ImageView) findViewById(R.id.btn_settings);
-
-
-        LinearLayout layout = (LinearLayout) findViewById(R.id.container);
-        ColorClickView view = new ColorClickView(this);
-        view.setOnGameListener(mOnGameListener);
-        layout.addView(view);
-
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        PreferencesUtils.putInt(this, mGameModel, mBestScore);
+    protected void onResume() {
+        super.onResume();
+        initSmallAds(getApplicationContext(), ZAdPosition.POSITION_GAME_ACTIVITY);
+    }
+
+    protected void initWidget() {
+
+        mScoreView = (TextView) findViewById(R.id.score);
+        mBestScoreView = (TextView) findViewById(R.id.best_score);
+        mLifeBar = (LinearLayout) findViewById(R.id.layout_life_bar);
+        mLifeBarLife0 = (ImageView) findViewById(R.id.life_bar_0);
+        mLifeBarLife1 = (ImageView) findViewById(R.id.life_bar_1);
+        mLifeBarLife2 = (ImageView) findViewById(R.id.life_bar_2);
+        mGameViewLayout = (LinearLayout) findViewById(R.id.game_view_layout);
+
+        mBestScore = PreferencesUtils.getInt(this, mGameModel, 0);
+        setScoreAndBestScore(0);
+
+        ColorClickView view = new ColorClickView(this);
+        view.setOnGameListener(mOnGameListener);
+        mGameViewLayout.addView(view);
+
     }
 
     private OnGameListener mOnGameListener = new OnGameListener() {
@@ -111,37 +134,50 @@ public class GameActivity extends BaseActivity {
                     setScoreAndBestScore(score);
                 }
             });
-
         }
     };
 
+    private void setScoreAndBestScore(int score) {
+        setScore(score);
+        if (score > mBestScore) {
+            mBestScore = score;
+            PreferencesUtils.putInt(this, mGameModel, mBestScore);
+        }
+        setBestScore(mBestScore);
+    }
 
-    private void setLifeBar(int life) {
-        if (life <= 0) {
-            mLifeBar0.setImageResource(R.drawable.life_dead);
-            mLifeBar1.setImageResource(R.drawable.life_dead);
-            mLifeBar2.setImageResource(R.drawable.life_dead);
-        } else if (life == 1) {
-            mLifeBar0.setImageResource(R.drawable.life_alive);
-            mLifeBar1.setImageResource(R.drawable.life_dead);
-            mLifeBar2.setImageResource(R.drawable.life_dead);
-        } else if (life == 2) {
-            mLifeBar0.setImageResource(R.drawable.life_alive);
-            mLifeBar1.setImageResource(R.drawable.life_alive);
-            mLifeBar2.setImageResource(R.drawable.life_dead);
-        } else if (life >= 3) {
-            mLifeBar0.setImageResource(R.drawable.life_alive);
-            mLifeBar1.setImageResource(R.drawable.life_alive);
-            mLifeBar2.setImageResource(R.drawable.life_alive);
+    protected void setScore(int score) {
+        if (mScoreView != null) {
+            mScoreView.setText(String.valueOf(score));
         }
     }
 
-    private void setScoreAndBestScore(int score) {
-        mScoreView.setText(String.valueOf(score));
-        if (score > mBestScore) {
-            mBestScore = score;
+    protected void setBestScore(int bestScore) {
+        if (mBestScoreView != null) {
+            String bestScoreText = getResources().getText(R.string.best_score) + ": " + String.valueOf(bestScore);
+            mBestScoreView.setText(bestScoreText);
         }
-        mBestScoreView.setText(String.valueOf(mBestScore));
+    }
+
+    protected void setLifeBar(int life) {
+        if (life <= 0) {
+            mLifeBarLife0.setImageResource(R.drawable.life_dead);
+            mLifeBarLife1.setImageResource(R.drawable.life_dead);
+            mLifeBarLife2.setImageResource(R.drawable.life_dead);
+        } else if (life == 1) {
+            mLifeBarLife0.setImageResource(R.drawable.life_alive);
+            mLifeBarLife1.setImageResource(R.drawable.life_dead);
+            mLifeBarLife2.setImageResource(R.drawable.life_dead);
+        } else if (life == 2) {
+            mLifeBarLife0.setImageResource(R.drawable.life_alive);
+            mLifeBarLife1.setImageResource(R.drawable.life_alive);
+            mLifeBarLife2.setImageResource(R.drawable.life_dead);
+        } else {
+            mLifeBarLife0.setImageResource(R.drawable.life_alive);
+            mLifeBarLife1.setImageResource(R.drawable.life_alive);
+            mLifeBarLife2.setImageResource(R.drawable.life_alive);
+        }
+
     }
 
     public static void comeToMe(Context context, String gameModel) {

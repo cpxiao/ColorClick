@@ -9,17 +9,17 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.cpxiao.commonlibrary.constant.Constant;
-import com.cpxiao.minigamelib.views.BaseSurfaceViewFPS;
+import com.cpxiao.colorclick.views.BaseSurfaceViewFPS;
 
 import java.util.Random;
 
 /**
- * Created by cpxiao on 8/23/16.
  * ColorClickView
+ *
+ * @author cpxiao on 2016/8/23.
  */
 public class ColorClickView extends BaseSurfaceViewFPS implements View.OnTouchListener {
-    private static final boolean DEBUG = Constant.DEBUG;
+    private static final boolean DEBUG = Config.DEBUG;
     private static final String TAG = ColorClickView.class.getSimpleName();
 
     private static final int COLOR_BG = 0xFFE2E2E2;
@@ -119,7 +119,7 @@ public class ColorClickView extends BaseSurfaceViewFPS implements View.OnTouchLi
                         paint.setColor(Color.BLACK);
                         paint.setTextSize(circle.bgR / 3);
                         paint.setTextAlign(Paint.Align.CENTER);
-                        canvas.drawText(getResources().getString(R.string.btn_start), circle.x, circle.y + circle.bgR / 5, paint);
+                        canvas.drawText(getResources().getString(R.string.start), circle.x, circle.y + circle.bgR / 5, paint);
                     }
                 }
             }
