@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-
-    <color name="bgDefaultColor">#ffffff</color>
-
-    <color name="common_white">#ffffff</color>
-    <color name="common_black">#000000</color>
 
 
-    <color name="btn_hexagon">#f8c8bf</color>
-    <color name="btn_hexagon_tap">#f9d9cf</color>
 </resources>

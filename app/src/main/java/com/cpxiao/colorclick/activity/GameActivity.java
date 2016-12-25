@@ -9,12 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cpxiao.androidutils.library.utils.PreferencesUtils;
-import com.cpxiao.colorclick.ColorClickView;
-import com.cpxiao.colorclick.KeyExtra;
-import com.cpxiao.colorclick.OnGameListener;
 import com.cpxiao.colorclick.R;
-import com.cpxiao.colorclick.ads.core.ZAdPosition;
-import com.cpxiao.colorclick.views.DialogUtils;
+import com.cpxiao.colorclick.imps.OnGameListener;
+import com.cpxiao.colorclick.mode.Extra;
+import com.cpxiao.colorclick.views.ColorClickView;
+import com.cpxiao.colorclick.utils.DialogUtils;
+import com.cpxiao.lib.activity.BaseActivity;
 
 /**
  * GameActivity
@@ -23,7 +23,7 @@ import com.cpxiao.colorclick.views.DialogUtils;
  */
 public class GameActivity extends BaseActivity {
 
-    private String mGameModel = KeyExtra.KEY_CLASSIC_BEST_SCORE;
+    private String mGameModel = Extra.KEY_CLASSIC_BEST_SCORE;
 
     /**
      * 分数
@@ -55,18 +55,13 @@ public class GameActivity extends BaseActivity {
         setContentView(R.layout.activity_game);
 
         if (getIntent() != null) {
-            String model = getIntent().getStringExtra(KeyExtra.INTENT_NAME_GAME_MODEL);
+            String model = getIntent().getStringExtra(Extra.INTENT_NAME_GAME_MODEL);
             if (model != null) {
                 mGameModel = model;
             }
         }
         initWidget();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        initSmallAds(getApplicationContext(), ZAdPosition.POSITION_GAME_ACTIVITY);
+        initFbAds50("167302960362723_167303267029359");
     }
 
     protected void initWidget() {
@@ -182,7 +177,7 @@ public class GameActivity extends BaseActivity {
 
     public static void comeToMe(Context context, String gameModel) {
         Intent intent = new Intent(context, GameActivity.class);
-        intent.putExtra(KeyExtra.INTENT_NAME_GAME_MODEL, gameModel);
+        intent.putExtra(Extra.INTENT_NAME_GAME_MODEL, gameModel);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }

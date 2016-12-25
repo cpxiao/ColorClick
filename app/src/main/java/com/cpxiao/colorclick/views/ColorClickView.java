@@ -1,4 +1,4 @@
-package com.cpxiao.colorclick;
+package com.cpxiao.colorclick.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.cpxiao.colorclick.views.BaseSurfaceViewFPS;
+import com.cpxiao.colorclick.R;
+import com.cpxiao.colorclick.imps.OnGameListener;
+import com.cpxiao.lib.Config;
 
 import java.util.Random;
 
@@ -73,8 +75,12 @@ public class ColorClickView extends BaseSurfaceViewFPS implements View.OnTouchLi
 
     @Override
     protected void initWidget() {
+        setBgColor(Color.WHITE);
         if (mX <= 0 || mY <= 0) {
-            throw new IllegalArgumentException("value error! mX <= 0 || mY <= 0");
+            if (DEBUG) {
+                throw new IllegalArgumentException("value error! mX <= 0 || mY <= 0");
+            }
+            return;
         }
         mCircles = new BaseCircle[mY][mX];
         int circleR = (int) (0.8f * Math.min(mViewWidth / mX, mViewHeight / mY) / 2);

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dialog_width"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/best_score"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/dialog_title_size_28sp"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <TableRow android:gravity="center">
+
+            <TextView
+                android:id="@+id/easy_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="3dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/dialog_msg_size_24sp"/>
+
+            <TextView
+                android:id="@+id/easy_score"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="3dp"
+                android:text="0"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/dialog_msg_size_24sp"/>
+        </TableRow>
+
+        <TableRow android:gravity="center">
+
+            <TextView
+                android:id="@+id/normal_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="3dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/dialog_msg_size_24sp"/>
+
+            <TextView
+                android:id="@+id/normal_score"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="3dp"
+                android:text="0"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/dialog_msg_size_24sp"/>
+        </TableRow>
+
+        <TableRow android:gravity="center">
+
+            <TextView
+                android:id="@+id/hard_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="3dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/dialog_msg_size_24sp"/>
+
+            <TextView
+                android:id="@+id/hard_score"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="3dp"
+                android:text="0"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/dialog_msg_size_24sp"/>
+        </TableRow>
+    </TableLayout>
+
+
+    <Button
+        android:id="@+id/dialog_btn_ok"
+        android:layout_width="@dimen/dialog_btn_width"
+        android:layout_height="@dimen/dialog_btn_height"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@drawable/dialog_btn_bg"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/ok"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/dialog_btn_size_16sp"/>
+
+
+</LinearLayout>
+

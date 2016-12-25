@@ -1,4 +1,4 @@
-package com.cpxiao.colorclick;
+package com.cpxiao.colorclick.imps;
 
 /**
  * OnGameListener

@@ -1,4 +1,4 @@
-package com.cpxiao.colorclick.views;//package com.cpxiao.colorclick.views;
+package com.cpxiao.colorclick.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -58,7 +58,9 @@ public abstract class BaseSurfaceViewFPS extends BaseSurfaceView implements Runn
 
     @Override
     public void run() {
-        Log.d(TAG, "run: ");
+        if (DEBUG) {
+            Log.d(TAG, "run: ");
+        }
         while (isRunning) {
             synchronized (BaseSurfaceViewFPS.class.getSimpleName()) {
                 int deltaTime = 1000 / mFPS;

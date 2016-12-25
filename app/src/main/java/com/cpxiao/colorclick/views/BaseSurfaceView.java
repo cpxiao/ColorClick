@@ -1,4 +1,4 @@
-package com.cpxiao.colorclick.views;//package com.cpxiao.colorclick.views;
+package com.cpxiao.colorclick.views;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.cpxiao.colorclick.Config;
+import com.cpxiao.lib.Config;
 
 /**
  * BaseSurfaceView

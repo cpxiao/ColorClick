@@ -1,4 +1,4 @@
-package com.cpxiao.colorclick.views;//package com.cpxiao.colorclick.views;
+package com.cpxiao.colorclick.utils;//package com.cpxiao.colorclick.views;
 
 import android.content.Context;
 import android.content.DialogInterface;

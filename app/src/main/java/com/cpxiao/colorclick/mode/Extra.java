@@ -1,11 +1,11 @@
-package com.cpxiao.colorclick;
+package com.cpxiao.colorclick.mode;
 
 /**
- * KeyExtra
+ * Extra
  *
  * @author cpxiao on 2016/8/26.
  */
-public class KeyExtra {
+public class Extra {
 
     public static final String INTENT_NAME_GAME_MODEL = "INTENT_NAME_GAME_MODEL";
 
