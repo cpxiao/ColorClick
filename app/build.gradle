@@ -3,33 +3,42 @@ apply plugin: 'com.jakewharton.hugo'
 //apply plugin: 'com.antfortune.freeline'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "com.cpxiao.colorclick"
-        minSdkVersion 9
+        minSdkVersion 9//使用freeline测试的时候最低14，之后改回对应版本9
         targetSdkVersion 23
         versionCode 113
         versionName "1.1.3"
     }
+
     buildTypes {
         release {
-            minifyEnabled true//混淆
+            minifyEnabled true  //混淆
             shrinkResources true // 移除无用的resource文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //多渠道打包
     productFlavors {
-        gp {}
+        debug_gp {
+            minSdkVersion 14
+        }
+        gp {
+            minSdkVersion 9
+        }
     }
 
     productFlavors.all {
 //        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
     }
+
 //    freeline {
 //        hack true
-//        productFlavor 'gp'
+//        productFlavor 'debug_gp'
 //    }
 
     //修改生成的apk名字
@@ -41,14 +50,16 @@ android {
                 def releaseApkName = packageName +
                         "_v" + defaultConfig.versionName +
                         "_" + variant.productFlavors[0].name +
-                        "_" + new Date().format('yyyyMMddHHmm') + '.apk'
+                        "_" + new Date().format('yyyyMMddHHmm') +
+                        '.apk'
                 output.outputFile = new File(oldFile.parent, releaseApkName)
             }
             if (variant.buildType.name.equals('beta')) {
                 def baseApkName = packageName +
                         "_v" + defaultConfig.versionName + "beta" +
                         "_" + variant.productFlavors[0].name +
-                        "_" + new Date().format('yyyyMMddHHmm') + '.apk'
+                        "_" + new Date().format('yyyyMMddHHmm') +
+                        '.apk'
                 output.outputFile = new File(oldFile.parent, baseApkName)
             }
             if (variant.buildType.name.equals('debug')) {
@@ -59,21 +70,8 @@ android {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
-//    compile 'com.android.support:appcompat-v7:23.4.0'
-
     compile project(':AndroidUtils:library')
-//    compile project(':AndroidMiniGame:library')
-
-    //友盟统计 start
-//    compile 'com.umeng.analytics:analytics:5.6.7'
-    //友盟统计 end
-
-    //Facebook广告 start
-    compile files('libs/AudienceNetwork_v4.7.jar')
-    //Facebook广告 end
-
-    compile 'com.google.firebase:firebase-ads:9.4.0'
+    compile project(':gamelib')
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:25.2.0'
+
+    /**
+     * Ads Start
+     */
+    //Facebook广告 start
+    compile files('libs/AudienceNetwork_v4.7.jar')
+    //Facebook广告 end
+
+    //AdMob广告 start
+    compile 'com.google.firebase:firebase-ads:9.4.0'
+    //AdMob广告 end
+
+    /**
+     * Ads End
+     */
+}
+
